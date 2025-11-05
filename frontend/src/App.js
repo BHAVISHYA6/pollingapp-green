@@ -5,6 +5,9 @@ import Login from './components/Login';
 import Register from './components/Register';
 import CreatePoll from './components/CreatePoll';
 import PollList from './components/PollList';
+import Amplify from 'aws-amplify';
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(false);

@@ -11,5 +11,142 @@
       "StackId": "arn:aws:cloudformation:ap-south-1:235150886668:stack/amplify-pollingapp-dev-fb6e6/7e2cafe0-ba3b-11f0-9e31-0a993274000f",
       "AmplifyAppId": "dxbdkx306r9tq"
     }
+  },
+  "auth": {
+    "pollingappf7f6c286": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-pollingapp-dev-fb6e6-deployment/amplify-cfn-templates/auth/pollingappf7f6c286-cloudformation-template.json",
+        "logicalId": "authpollingappf7f6c286"
+      },
+      "lastPushTimeStamp": "2025-11-05T13:18:58.336Z",
+      "output": {
+        "UserPoolId": "ap-south-1_yg1BWvige",
+        "AppClientIDWeb": "722ku1p6eaufa38794deael805",
+        "AppClientID": "6uiknmf7p3iadai4ponvk3uel0",
+        "IdentityPoolId": "ap-south-1:90db72ea-b483-4ad7-9831-d5115da5f04c",
+        "UserPoolArn": "arn:aws:cognito-idp:ap-south-1:235150886668:userpool/ap-south-1_yg1BWvige",
+        "IdentityPoolName": "pollingappf7f6c286_identitypool_f7f6c286__dev",
+        "UserPoolName": "pollingappf7f6c286_userpool_f7f6c286",
+        "HostedUIDomain": "pollingappef71066f-ef71066f-dev",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"implicit\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://main.dxbdkx306r9tq.amplifyapp.com/\"],\"LogoutURLs\":[\"https://main.dxbdkx306r9tq.amplifyapp.com/\"]}"
+      },
+      "lastPushDirHash": "8bO2cPLRFKNSUjk63+8wdq4Bdhg="
+    },
+    "userPoolGroups": {
+      "service": "Cognito-UserPool-Groups",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "pollingappf7f6c286",
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID"
+          ]
+        }
+      ],
+      "lastPushTimeStamp": "2025-11-05T13:18:58.336Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-pollingapp-dev-fb6e6-deployment/amplify-cfn-templates/auth/userPoolGroups-cloudformation-template.json",
+        "logicalId": "authuserPoolGroups"
+      },
+      "output": {},
+      "lastPushDirHash": "8vMrkx1pJVKUQyjXMLQj72qx76Y="
+    }
+  },
+  "function": {
+    "AdminQueries34c94cdc": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true,
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "pollingappf7f6c286",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "lastBuildTimeStamp": "2025-11-05T13:14:39.311Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2025-11-05T13:14:55.038Z",
+      "distZipFilename": "AdminQueries34c94cdc-4d6743644c33584b4442-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-pollingapp-dev-fb6e6-deployment",
+        "s3Key": "amplify-builds/AdminQueries34c94cdc-4d6743644c33584b4442-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-pollingapp-dev-fb6e6-deployment/amplify-cfn-templates/function/AdminQueries34c94cdc-cloudformation-template.json",
+        "logicalId": "functionAdminQueries34c94cdc"
+      },
+      "lastPushTimeStamp": "2025-11-05T13:18:58.336Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::235150886668:role/AdminQueries34c94cdcLambdaRole-dev",
+        "Region": "ap-south-1",
+        "Arn": "arn:aws:lambda:ap-south-1:235150886668:function:AdminQueries34c94cdc-dev",
+        "Name": "AdminQueries34c94cdc-dev",
+        "LambdaExecutionRole": "AdminQueries34c94cdcLambdaRole-dev"
+      },
+      "lastPushDirHash": "2rhQTgWRsSUeDtiI216OBXpScAk="
+    }
+  },
+  "api": {
+    "AdminQueries": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "pollingappf7f6c286",
+          "attributes": [
+            "UserPoolId"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "AdminQueries34c94cdc",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-pollingapp-dev-fb6e6-deployment/amplify-cfn-templates/api/AdminQueries-cloudformation-template.json",
+        "logicalId": "apiAdminQueries"
+      },
+      "lastPushTimeStamp": "2025-11-05T13:18:58.336Z",
+      "output": {
+        "ApiName": "AdminQueries",
+        "RootUrl": "https://er2rt7vzgi.execute-api.ap-south-1.amazonaws.com/dev",
+        "ApiId": "er2rt7vzgi"
+      },
+      "lastPushDirHash": "0js4X5h9WJEH75hVFG4RVsWbFPk="
+    }
   }
 }
