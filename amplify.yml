@@ -16,6 +16,6 @@ frontend:
     paths:
       - frontend/node_modules/**/*
   rewrites:
-    - source: '/<!*>'
+    - source: '/</*>'
       target: '/index.html'
       status: 200
