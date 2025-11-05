@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
+import './styles.css';
 import PollList from './components/PollList';
 import CreatePoll from './components/CreatePoll';
 import { Amplify } from 'aws-amplify';
