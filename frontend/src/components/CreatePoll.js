@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 const CreatePoll = () => {
   const [question, setQuestion] = useState('');
@@ -15,7 +16,7 @@ const CreatePoll = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/polls', { question, options }, {
+      await axios.post(`${API_BASE_URL}/api/polls`, { question, options }, {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       window.location.href = '/';

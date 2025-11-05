@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 const Poll = ({ poll }) => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -8,7 +9,7 @@ const Poll = ({ poll }) => {
   const handleVote = async () => {
     if (!token) return alert('Login to vote');
     try {
-      await axios.post(`/api/polls/${poll._id}/vote`, { optionIndex: selectedOption }, {
+      await axios.post(`${API_BASE_URL}/api/polls/${poll._id}/vote`, { optionIndex: selectedOption }, {
         headers: { 'x-auth-token': token }
       });
       window.location.reload();

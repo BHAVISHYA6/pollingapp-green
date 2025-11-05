@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Poll from './Poll';
+import API_BASE_URL from '../config';
 
 const PollList = () => {
   const [polls, setPolls] = useState([]);
@@ -8,7 +9,7 @@ const PollList = () => {
   useEffect(() => {
     const fetchPolls = async () => {
       try {
-        const res = await axios.get('/api/polls');
+        const res = await axios.get(`${API_BASE_URL}/api/polls`);
         setPolls(res.data);
       } catch (err) {
         console.error(err);
