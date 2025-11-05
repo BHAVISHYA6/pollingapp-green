@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import './styles.css';
-import Amplify from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
+
+// ✅ Correct configuration for Amplify v6
 Amplify.configure(awsExports);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

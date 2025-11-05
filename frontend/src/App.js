@@ -4,6 +4,10 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import PollList from './components/PollList';
 import CreatePoll from './components/CreatePoll';
+import { Amplify } from 'aws-amplify';
+import awsExports from './aws-exports';
+
+Amplify.configure(awsExports);
 
 function App({ user, signOut }) {
   const isAdmin = user?.signInUserSession?.idToken?.payload?.['cognito:groups']?.includes('Admins');
