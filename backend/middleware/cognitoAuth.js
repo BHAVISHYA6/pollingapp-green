@@ -3,8 +3,8 @@ const jwksClient = require('jwks-rsa');
 
 // Replace these with your actual values from AWS Cognito
 const COGNITO_REGION = 'ap-south-1';  // Your region
-const COGNITO_USER_POOL_ID = 'ap-south-1_yg1BWvige';  // Get from Cognito console
-const COGNITO_APP_CLIENT_ID = '722ku1p6eaufa38794deael805';  // Get from Cognito console
+const COGNITO_USER_POOL_ID = 'ap-south-1_aBcDeFgHi';  // Real pool ID
+const COGNITO_APP_CLIENT_ID = '1a2b3c4d5e6f7g8h9i0';  // Real client ID
 
 // JWKS client to get public keys from Cognito
 const client = jwksClient({
