@@ -9,7 +9,8 @@ app.use(cors({
   origin: [
     'http://localhost:3000', 
     'http://localhost:3001',  // ← ADD THIS
-    'https://main.dxbdkx306r9tq.amplifyapp.com'
+    'https://main.dxbdkx306r9tq.amplifyapp.com',
+    'https://main.dszu1wswbm2ky.amplifyapp.com'
   ],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
